@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+
+# Rendered from scripts/make-share-card.mjs on every build.
+public/share-card.png
