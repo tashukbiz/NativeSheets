@@ -7,7 +7,7 @@ Download: https://tashukbiz.github.io/NativeSheets/
 ## Requirements
 
 - macOS 14 or later
-- Apple Silicon
+- Apple Silicon or Intel. The app ships as a universal binary.
 - To build: Swift 6 toolchain (Xcode 16 or later)
 
 ## Build
@@ -21,13 +21,20 @@ cd NativeSheets/native-sheets
 ```
 
 This makes `build/Native Sheets.app`. On an existing clone, run `git pull` first.
+A release build carries both architectures; a debug build (`./Scripts/make_app.sh debug`)
+only carries the one the machine runs, which halves the build.
 
-To package the bundle for distribution, use `ditto`. It keeps the bundle layout
-and the ad-hoc signature intact, which `zip` does not.
+## Package
+
+The published deliverable is a disk image: the app next to an Applications
+symlink, so installing is a drag.
 
 ```bash
-ditto -c -k --sequesterRsrc --keepParent "build/Native Sheets.app" NativeSheets.zip
+./Scripts/make_dmg.sh
 ```
+
+This makes `build/NativeSheets.dmg`. It builds the release app first, then
+checks the signature and prints the architectures in the binary.
 
 ## Features
 
@@ -73,5 +80,6 @@ Sources/XLSXKit          file format, no AppKit
 Sources/XLSXEditorCore   interface, as a library so tests can drive it
 Sources/XLSXEditor       executable
 Scripts/make_app.sh      builds the .app bundle
+Scripts/make_dmg.sh      packages the bundle as NativeSheets.dmg
 landing/                 website, published to GitHub Pages
 ```

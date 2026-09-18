@@ -9,9 +9,14 @@ CONFIGURATION="${1:-release}"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP="$ROOT/build/Native Sheets.app"
 
+# A release build is universal, so one download runs on Apple Silicon and on
+# Intel. A debug build stays on the host architecture, which is half the work.
+ARCHS="--arch arm64 --arch x86_64"
+[ "$CONFIGURATION" = "release" ] || ARCHS=""
+
 cd "$ROOT"
-swift build -c "$CONFIGURATION"
-BIN_PATH="$(swift build -c "$CONFIGURATION" --show-bin-path)"
+swift build -c "$CONFIGURATION" $ARCHS
+BIN_PATH="$(swift build -c "$CONFIGURATION" $ARCHS --show-bin-path)"
 
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
