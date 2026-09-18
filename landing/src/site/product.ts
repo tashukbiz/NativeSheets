@@ -1,7 +1,6 @@
 /**
  * Verified product facts. Every claim here is traceable to the app repository
- * (native-sheets/README.md, native-sheets/ARCHITECTURE.md, Resources/Info.plist,
- * Package.swift). Nothing unverified belongs in this file.
+ * (native-sheets/README.md, Resources/Info.plist, Package.swift).
  */
 
 export type Availability = "released" | "source-available" | "coming-soon" | "unavailable";

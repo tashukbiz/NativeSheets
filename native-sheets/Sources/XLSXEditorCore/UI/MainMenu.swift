@@ -33,14 +33,14 @@ enum MainMenu {
     }
 
     private static func applicationMenu() -> NSMenuItem {
-        submenu("XLSX Editor") { menu in
-            add(menu, "About XLSX Editor", #selector(NSApplication.orderFrontStandardAboutPanel(_:)))
+        submenu("Native Sheets") { menu in
+            add(menu, "About Native Sheets", #selector(NSApplication.orderFrontStandardAboutPanel(_:)))
             menu.addItem(.separator())
-            add(menu, "Hide XLSX Editor", #selector(NSApplication.hide(_:)), "h")
+            add(menu, "Hide Native Sheets", #selector(NSApplication.hide(_:)), "h")
             add(menu, "Hide Others", #selector(NSApplication.hideOtherApplications(_:)), "h", [.command, .option])
             add(menu, "Show All", #selector(NSApplication.unhideAllApplications(_:)))
             menu.addItem(.separator())
-            add(menu, "Quit XLSX Editor", #selector(NSApplication.terminate(_:)), "q")
+            add(menu, "Quit Native Sheets", #selector(NSApplication.terminate(_:)), "q")
         }
     }
 

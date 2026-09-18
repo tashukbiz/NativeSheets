@@ -1,5 +1,5 @@
 #!/bin/bash
-# Assembles XLSX Editor.app from the SwiftPM executable.
+# Assembles Native Sheets.app from the SwiftPM executable.
 #
 # AppKit needs a real bundle, not a bare binary: without Info.plist there is no
 # menu bar, no document types and no Dock icon.
@@ -7,7 +7,7 @@ set -euo pipefail
 
 CONFIGURATION="${1:-release}"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-APP="$ROOT/build/XLSX Editor.app"
+APP="$ROOT/build/Native Sheets.app"
 
 cd "$ROOT"
 swift build -c "$CONFIGURATION"
@@ -16,7 +16,7 @@ BIN_PATH="$(swift build -c "$CONFIGURATION" --show-bin-path)"
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 
-cp "$BIN_PATH/XLSXEditor" "$APP/Contents/MacOS/XLSX Editor"
+cp "$BIN_PATH/XLSXEditor" "$APP/Contents/MacOS/Native Sheets"
 cp "$ROOT/Resources/Info.plist" "$APP/Contents/Info.plist"
 if [ -f "$ROOT/Resources/AppIcon.icns" ]; then
   cp "$ROOT/Resources/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
