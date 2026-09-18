@@ -12,11 +12,22 @@ Download: https://tashukbiz.github.io/NativeSheets/
 
 ## Build
 
+Build the app from the latest code:
+
 ```bash
+git clone https://github.com/tashukbiz/NativeSheets.git
+cd NativeSheets/native-sheets
 ./Scripts/make_app.sh
 ```
 
-This makes `build/Native Sheets.app`.
+This makes `build/Native Sheets.app`. On an existing clone, run `git pull` first.
+
+To package the bundle for distribution, use `ditto`. It keeps the bundle layout
+and the ad-hoc signature intact, which `zip` does not.
+
+```bash
+ditto -c -k --sequesterRsrc --keepParent "build/Native Sheets.app" NativeSheets.zip
+```
 
 ## Features
 
