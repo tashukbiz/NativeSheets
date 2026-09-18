@@ -10,6 +10,7 @@ export interface ProductFacts {
   category: string;
   platform: string;
   minimumOS: string;
+  architecture: string;
   price: string;
   availability: Availability;
   /** How a visitor can actually get the app today. */
@@ -21,11 +22,37 @@ export const product: ProductFacts = {
   category: "Spreadsheet editor for .xlsx files",
   platform: "macOS",
   minimumOS: "macOS 14 or later",
+  architecture: "Apple Silicon",
   price: "Free",
-  availability: "source-available",
+  availability: "released",
   accessNote:
-    "The app is built from source with a single script. There is no App Store listing and no signed, notarised download yet.",
+    "The app is a free download. It is not on the App Store and it is not notarised, so macOS asks you to confirm the first launch.",
 };
+
+/**
+ * The download. The asset is published as a GitHub release, and the URL below
+ * is the stable alias GitHub keeps pointed at the newest release.
+ */
+export const download = {
+  url: "https://github.com/tashukbiz/NativeSheets/releases/latest/download/NativeSheets.zip",
+  releasesUrl: "https://github.com/tashukbiz/NativeSheets/releases",
+  repositoryUrl: "https://github.com/tashukbiz/NativeSheets",
+  fileName: "NativeSheets.zip",
+  bundleName: "Native Sheets.app",
+  format: "ZIP archive containing the app bundle",
+} as const;
+
+/**
+ * The app carries an ad-hoc signature rather than a Developer ID, so Gatekeeper
+ * blocks the first launch. These are the steps that clear it.
+ */
+export const installSteps: string[] = [
+  "Download the ZIP and open it. macOS expands it to Native Sheets.app.",
+  "Move Native Sheets.app to your Applications folder.",
+  "Open it. macOS refuses the first launch because the app is not notarised.",
+  "Go to System Settings, then Privacy & Security. Find the message about Native Sheets and select Open Anyway.",
+  "Confirm. macOS remembers the choice, so later launches open directly.",
+];
 
 export interface Capability {
   id: string;
@@ -110,7 +137,8 @@ export const limitations: string[] = [
   "There is no find and replace, no sorting or filtering, and no cell comments.",
   "Printing is only what NSDocument provides for free.",
   "Formula support is a wide subset rather than the whole of Excel's function list. Array formulas, INDIRECT, OFFSET and defined names are not evaluated, though defined names survive a save.",
-  "The app runs on macOS 14 or later. There is no Windows, Linux, iOS or web build of the editor itself.",
+  "The app runs on macOS 14 or later, on Apple Silicon. There is no Intel, Windows, Linux, iOS or web build of the editor itself.",
+  "The app is signed ad-hoc, not notarised by Apple. macOS blocks the first launch until you allow it in Privacy & Security.",
 ];
 
 /**

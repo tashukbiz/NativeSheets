@@ -1,5 +1,5 @@
 import { siteConfig } from "./config";
-import { product } from "./product";
+import { download, product } from "./product";
 import { authorById } from "./content/authors";
 import { readingMinutes, routeOf, type ContentRecord } from "./content";
 import { absoluteAssetUrl, absoluteUrl } from "./urls";
@@ -44,8 +44,8 @@ export function websiteSchema(): JsonValue {
 }
 
 /**
- * The app is free and source-available. No offer, price, rating or review is
- * emitted, because none of those facts exist for this product.
+ * The app is a free download. A zero-price offer is emitted because that fact is
+ * real. No rating or review is emitted, because neither exists for this product.
  */
 export function softwareApplicationSchema(): JsonValue {
   return {
@@ -59,6 +59,15 @@ export function softwareApplicationSchema(): JsonValue {
     isAccessibleForFree: true,
     author: { "@id": operatorId },
     url: absoluteUrl("/"),
+    downloadUrl: download.url,
+    softwareVersion: "1.0",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: absoluteUrl("/"),
+    },
     description: siteConfig.description,
   };
 }

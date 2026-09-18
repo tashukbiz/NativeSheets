@@ -1,7 +1,15 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { siteConfig } from "@/site/config";
-import { benchmark, buildCommand, capabilities, limitations, product } from "@/site/product";
+import {
+  benchmark,
+  buildCommand,
+  capabilities,
+  download,
+  installSteps,
+  limitations,
+  product,
+} from "@/site/product";
 import { articles, features, routeOf } from "@/site/content";
 import { href } from "@/site/urls";
 import { pageMetadata } from "@/site/metadata";
@@ -26,24 +34,24 @@ export default function HomePage() {
             <p className="eyebrow">Free · macOS · .xlsx</p>
             <h1>Open a spreadsheet without opening a spreadsheet suite</h1>
             <p className="lede">
-              Native Sheets reads and edits .xlsx workbooks on macOS, and keeps the parts of a
-              file it does not model instead of throwing them away. Read a workbook right now in
-              your browser: no upload, no account, nothing to install.
+              Native Sheets reads and edits .xlsx workbooks on macOS. It keeps the parts of a file
+              it does not model instead of throwing them away. Download it, or read a workbook in
+              your browser right now.
             </p>
             <p className="button-row" style={{ marginTop: "var(--step-3)" }}>
-              <Link className="button button--primary" href={href("/viewer/")}>
+              <a className="button button--primary" href={download.url}>
+                Download for macOS
+              </a>
+              <Link className="button button--secondary" href={href("/viewer/")}>
                 Open a workbook in the browser
-              </Link>
-              <Link className="button button--secondary" href={href("/features/")}>
-                What the macOS app does
               </Link>
             </p>
             <ul className="fact-list">
-              <li>The browser viewer parses your file in the page. Nothing is sent anywhere.</li>
               <li>
-                The macOS app is free and needs {product.minimumOS}. It is built from source: there
-                is no App Store listing and no signed download yet.
+                Free. {product.minimumOS}, {product.architecture}. No account and no runtime to
+                install.
               </li>
+              <li>The browser viewer parses your file in the page. Nothing is sent anywhere.</li>
             </ul>
           </div>
           <GridIllustration />
@@ -151,21 +159,33 @@ export default function HomePage() {
               </ul>
             </div>
 
-            <div className="panel prose">
+            <div className="panel prose" id="download">
               <h2 style={{ marginTop: 0 }}>Getting the app</h2>
               <p>
-                {product.accessNote} Building it needs {product.minimumOS} and a Swift 6 toolchain
-                (Xcode 16 or newer). From the app repository:
+                {product.accessNote} It needs {product.minimumOS} on {product.architecture}.
+              </p>
+              <p className="button-row">
+                <a className="button button--primary" href={download.url}>
+                  Download {download.fileName}
+                </a>
+              </p>
+              <h3>Installing</h3>
+              <ol>
+                {installSteps.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+              <p>
+                You only do step 4 once. Alternatively, build the app yourself from source with a
+                Swift 6 toolchain (Xcode 16 or newer):
               </p>
               <pre>
                 <code>{buildCommand}</code>
               </pre>
               <p>
-                That produces an app bundle you can double-click. The bundle still carries the
-                project&rsquo;s working title, <code>XLSX Editor.app</code>. If you would rather not
-                build anything, the{" "}
-                <Link href={href("/viewer/")}>browser viewer</Link> reads workbooks without any of
-                that.
+                The source is on <a href={download.repositoryUrl}>GitHub</a>. If you would rather
+                install nothing, the <Link href={href("/viewer/")}>browser viewer</Link> reads
+                workbooks in this tab.
               </p>
             </div>
           </div>
@@ -205,15 +225,17 @@ export default function HomePage() {
             <div>
               <h3>Which macOS versions?</h3>
               <p>
-                {product.minimumOS}. There is no Windows, Linux or iOS build of the editor. The
-                browser viewer works in any current browser that supports decompression streams.
+                {product.minimumOS}, on {product.architecture}. There is no Intel, Windows, Linux
+                or iOS build of the editor. The browser viewer works in any current browser that
+                supports decompression streams.
               </p>
             </div>
             <div>
               <h3>Is it on the App Store?</h3>
               <p>
-                Not today. There is no store listing and no notarised installer, which is why this
-                site does not offer a download button.
+                No. You download it from this site. Because the app is not notarised by Apple,
+                macOS blocks the first launch until you allow it in Privacy &amp; Security. The{" "}
+                <a href="#download">install steps</a> above cover it.
               </p>
             </div>
           </div>
@@ -237,7 +259,10 @@ export default function HomePage() {
             ))}
           </ul>
           <p className="button-row">
-            <Link className="button button--primary" href={href("/viewer/")}>
+            <a className="button button--primary" href={download.url}>
+              Download for macOS
+            </a>
+            <Link className="button button--secondary" href={href("/viewer/")}>
               Open a workbook in the browser
             </Link>
             <Link className="button button--secondary" href={href("/blog/")}>
