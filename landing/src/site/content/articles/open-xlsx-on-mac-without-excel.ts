@@ -124,21 +124,31 @@ export const openXlsxOnMacWithoutExcel: ContentRecord = {
     {
       kind: "paragraph",
       content: [
-        "Native Sheets is free and has no third-party dependencies, but it is currently source-available rather than a download: there is no App Store listing and no signed, notarised installer yet. You build it with one script, which needs macOS 14 or later and a Swift 6 toolchain (Xcode 16 or newer):",
+        "Native Sheets is free and has no third-party dependencies. ",
+        {
+          text: "Download it",
+          href: "https://github.com/tashukbiz/NativeSheets/releases/latest/download/NativeSheets.zip",
+          external: true,
+        },
+        " and move the app to your Applications folder. It needs macOS 14 or later on Apple Silicon.",
+      ],
+    },
+    {
+      kind: "paragraph",
+      content: [
+        "The app is signed ad-hoc rather than notarised by Apple, so macOS refuses the first launch. To clear it, open System Settings, go to Privacy & Security, find the message about Native Sheets and select Open Anyway. macOS remembers the choice.",
+      ],
+    },
+    {
+      kind: "paragraph",
+      content: [
+        "You can also build it yourself. This needs a Swift 6 toolchain (Xcode 16 or newer):",
       ],
     },
     {
       kind: "code",
       language: "bash",
-      code: "./Scripts/make_app.sh\nopen \"build/XLSX Editor.app\" your-workbook.xlsx",
-    },
-    {
-      kind: "paragraph",
-      content: [
-        "The bundle that script produces is still named after the project's working title, ",
-        { code: "XLSX Editor.app" },
-        ". If building from source is not something you want to do, LibreOffice Calc is the closest free alternative that ships a ready installer, with the caveat in the table above about rewriting the whole package.",
-      ],
+      code: "./Scripts/make_app.sh\nopen \"build/Native Sheets.app\" your-workbook.xlsx",
     },
     { kind: "heading", id: "questions", text: "Common questions" },
     {

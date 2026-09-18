@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/site/config";
+import { download } from "@/site/product";
 import { href } from "@/site/urls";
 
 const navigation = [
@@ -23,9 +24,9 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <Link className="button button--primary" href={href("/viewer/")}>
-            Open a workbook
-          </Link>
+          <a className="button button--primary" href={download.url}>
+            Download
+          </a>
         </nav>
       </div>
     </header>
