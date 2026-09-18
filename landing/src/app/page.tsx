@@ -162,7 +162,8 @@ export default function HomePage() {
             <div className="panel prose" id="download">
               <h2 style={{ marginTop: 0 }}>Getting the app</h2>
               <p>
-                {product.accessNote} It needs {product.minimumOS} on {product.architecture}.
+                {product.accessNote} It needs {product.minimumOS}, and the download is a
+                universal binary that runs on {product.architecture}.
               </p>
               <p className="button-row">
                 <a className="button button--primary" href={download.url}>
@@ -225,9 +226,9 @@ export default function HomePage() {
             <div>
               <h3>Which macOS versions?</h3>
               <p>
-                {product.minimumOS}, on {product.architecture}. There is no Intel, Windows, Linux
-                or iOS build of the editor. The browser viewer works in any current browser that
-                supports decompression streams.
+                {product.minimumOS}, on {product.architecture}: one universal download covers
+                both. There is no Windows, Linux or iOS build of the editor. The browser viewer
+                works in any current browser that supports decompression streams.
               </p>
             </div>
             <div>

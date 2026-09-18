@@ -85,7 +85,7 @@ export const viewerTool: ContentRecord = {
     {
       kind: "paragraph",
       content: [
-        "Native Sheets is a free macOS app that edits .xlsx files and preserves the parts of the package it does not model. You can download it for macOS 14 or later on Apple Silicon. ",
+        "Native Sheets is a free macOS app that edits .xlsx files and preserves the parts of the package it does not model. You can download it for macOS 14 or later, on Apple Silicon or Intel. ",
         { text: "What it does and what it does not do", href: "/" },
         " is on the home page.",
       ],

@@ -127,10 +127,10 @@ export const openXlsxOnMacWithoutExcel: ContentRecord = {
         "Native Sheets is free and has no third-party dependencies. ",
         {
           text: "Download it",
-          href: "https://github.com/tashukbiz/NativeSheets/releases/latest/download/NativeSheets.zip",
+          href: "https://github.com/tashukbiz/NativeSheets/releases/latest/download/NativeSheets.dmg",
           external: true,
         },
-        " and move the app to your Applications folder. It needs macOS 14 or later on Apple Silicon.",
+        " and drag the app from the disk image to your Applications folder. It needs macOS 14 or later, on Apple Silicon or Intel.",
       ],
     },
     {

@@ -22,7 +22,7 @@ export const product: ProductFacts = {
   category: "Spreadsheet editor for .xlsx files",
   platform: "macOS",
   minimumOS: "macOS 14 or later",
-  architecture: "Apple Silicon",
+  architecture: "Apple Silicon or Intel",
   price: "Free",
   availability: "released",
   accessNote:
@@ -34,12 +34,12 @@ export const product: ProductFacts = {
  * is the stable alias GitHub keeps pointed at the newest release.
  */
 export const download = {
-  url: "https://github.com/tashukbiz/NativeSheets/releases/latest/download/NativeSheets.zip",
+  url: "https://github.com/tashukbiz/NativeSheets/releases/latest/download/NativeSheets.dmg",
   releasesUrl: "https://github.com/tashukbiz/NativeSheets/releases",
   repositoryUrl: "https://github.com/tashukbiz/NativeSheets",
-  fileName: "NativeSheets.zip",
+  fileName: "NativeSheets.dmg",
   bundleName: "Native Sheets.app",
-  format: "ZIP archive containing the app bundle",
+  format: "Disk image containing the app bundle",
 } as const;
 
 /**
@@ -47,9 +47,9 @@ export const download = {
  * blocks the first launch. These are the steps that clear it.
  */
 export const installSteps: string[] = [
-  "Download the ZIP and open it. macOS expands it to Native Sheets.app.",
-  "Move Native Sheets.app to your Applications folder.",
-  "Open it. macOS refuses the first launch because the app is not notarised.",
+  "Download the disk image and open it. macOS mounts it and shows Native Sheets beside a shortcut to Applications.",
+  "Drag Native Sheets onto Applications, then eject the disk image.",
+  "Open the app from Applications. macOS refuses the first launch because the app is not notarised.",
   "Go to System Settings, then Privacy & Security. Find the message about Native Sheets and select Open Anyway.",
   "Confirm. macOS remembers the choice, so later launches open directly.",
 ];
@@ -137,7 +137,7 @@ export const limitations: string[] = [
   "There is no find and replace, no sorting or filtering, and no cell comments.",
   "Printing is only what NSDocument provides for free.",
   "Formula support is a wide subset rather than the whole of Excel's function list. Array formulas, INDIRECT, OFFSET and defined names are not evaluated, though defined names survive a save.",
-  "The app runs on macOS 14 or later, on Apple Silicon. There is no Intel, Windows, Linux, iOS or web build of the editor itself.",
+  "The app runs on macOS 14 or later. It is a universal binary, so Apple Silicon and Intel Macs both run it, but there is no Windows, Linux, iOS or web build of the editor itself.",
   "The app is signed ad-hoc, not notarised by Apple. macOS blocks the first launch until you allow it in Privacy & Security.",
 ];
 
