@@ -17,18 +17,61 @@
 		A1B2C3D4E5F6000000000608 /* XLSXKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6000000000002 /* XLSXKit.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A1B2C3D4E5F6000000000801 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1B2C3D4E5F6000000000200;
+			remoteInfo = XLSXKit;
+		};
+		A1B2C3D4E5F6000000000802 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1B2C3D4E5F6000000000300;
+			remoteInfo = XLSXEditorCore;
+		};
+		A1B2C3D4E5F6000000000803 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1B2C3D4E5F6000000000200;
+			remoteInfo = XLSXKit;
+		};
+		A1B2C3D4E5F6000000000804 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1B2C3D4E5F6000000000200;
+			remoteInfo = XLSXKit;
+		};
+		A1B2C3D4E5F6000000000805 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1B2C3D4E5F6000000000300;
+			remoteInfo = XLSXEditorCore;
+		};
+		A1B2C3D4E5F6000000000806 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1B2C3D4E5F6000000000200;
+			remoteInfo = XLSXKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		A1B2C3D4E5F6000000000104 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolder = Frameworks;
 			files = (
 				A1B2C3D4E5F6000000000603 /* XLSXKit.framework in Embed Frameworks */,
 				A1B2C3D4E5F6000000000604 /* XLSXEditorCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -89,44 +132,34 @@
 /* Begin PBXFrameworksBuildPhase section */
 		A1B2C3D4E5F6000000000102 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A1B2C3D4E5F6000000000601 /* XLSXKit.framework in Frameworks */,
 				A1B2C3D4E5F6000000000602 /* XLSXEditorCore.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000202 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000302 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A1B2C3D4E5F6000000000605 /* XLSXKit.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000402 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A1B2C3D4E5F6000000000606 /* XLSXKit.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000502 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A1B2C3D4E5F6000000000607 /* XLSXEditorCore.framework in Frameworks */,
 				A1B2C3D4E5F6000000000608 /* XLSXKit.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -161,17 +194,13 @@
 /* Begin PBXHeadersBuildPhase section */
 		A1B2C3D4E5F6000000000204 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000304 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
@@ -209,8 +238,6 @@
 				A1B2C3D4E5F6000000000203 /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
 				A1B2C3D4E5F6000000000011 /* XLSXKit */,
@@ -326,76 +353,56 @@
 /* Begin PBXResourcesBuildPhase section */
 		A1B2C3D4E5F6000000000103 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000203 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000303 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000403 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000503 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A1B2C3D4E5F6000000000101 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000201 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000301 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000401 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1B2C3D4E5F6000000000501 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -432,53 +439,8 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXContainerItemProxy section */
-		A1B2C3D4E5F6000000000801 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A1B2C3D4E5F6000000000200;
-			remoteInfo = XLSXKit;
-		};
-		A1B2C3D4E5F6000000000802 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A1B2C3D4E5F6000000000300;
-			remoteInfo = XLSXEditorCore;
-		};
-		A1B2C3D4E5F6000000000803 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A1B2C3D4E5F6000000000200;
-			remoteInfo = XLSXKit;
-		};
-		A1B2C3D4E5F6000000000804 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A1B2C3D4E5F6000000000200;
-			remoteInfo = XLSXKit;
-		};
-		A1B2C3D4E5F6000000000805 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A1B2C3D4E5F6000000000300;
-			remoteInfo = XLSXEditorCore;
-		};
-		A1B2C3D4E5F6000000000806 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1B2C3D4E5F6000000000000 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A1B2C3D4E5F6000000000200;
-			remoteInfo = XLSXKit;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin XCBuildConfiguration section */
-		A1B2C3D4E5F6000000000901 /* Debug */ = {
+		A1B2C3D4E5F6000000000901 /* Debug configuration for PBXProject "Native Sheets" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -546,7 +508,7 @@
 			};
 			name = Debug;
 		};
-		A1B2C3D4E5F6000000000902 /* Release */ = {
+		A1B2C3D4E5F6000000000902 /* Release configuration for PBXProject "Native Sheets" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -606,16 +568,24 @@
 			};
 			name = Release;
 		};
-		A1B2C3D4E5F6000000001001 /* Debug */ = {
+		A1B2C3D4E5F6000000001001 /* Debug configuration for PBXNativeTarget "Native Sheets" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
+				AUTOMATION_APPLE_EVENTS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C4U32HYQHG;
 				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Native Sheets/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -623,24 +593,38 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nativesheets.app;
+				PRODUCT_BUNDLE_IDENTIFIER = app.tashuk.nativesheets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Debug;
 		};
-		A1B2C3D4E5F6000000001002 /* Release */ = {
+		A1B2C3D4E5F6000000001002 /* Release configuration for PBXNativeTarget "Native Sheets" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				AUTOMATION_APPLE_EVENTS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C4U32HYQHG;
 				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Native Sheets/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -648,14 +632,20 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nativesheets.app;
+				PRODUCT_BUNDLE_IDENTIFIER = app.tashuk.nativesheets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
-		A1B2C3D4E5F6000000001101 /* Debug */ = {
+		A1B2C3D4E5F6000000001101 /* Debug configuration for PBXNativeTarget "XLSXKit" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
@@ -683,7 +673,7 @@
 			};
 			name = Debug;
 		};
-		A1B2C3D4E5F6000000001102 /* Release */ = {
+		A1B2C3D4E5F6000000001102 /* Release configuration for PBXNativeTarget "XLSXKit" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
@@ -711,7 +701,7 @@
 			};
 			name = Release;
 		};
-		A1B2C3D4E5F6000000001201 /* Debug */ = {
+		A1B2C3D4E5F6000000001201 /* Debug configuration for PBXNativeTarget "XLSXEditorCore" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
@@ -739,7 +729,7 @@
 			};
 			name = Debug;
 		};
-		A1B2C3D4E5F6000000001202 /* Release */ = {
+		A1B2C3D4E5F6000000001202 /* Release configuration for PBXNativeTarget "XLSXEditorCore" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
@@ -767,7 +757,7 @@
 			};
 			name = Release;
 		};
-		A1B2C3D4E5F6000000001301 /* Debug */ = {
+		A1B2C3D4E5F6000000001301 /* Debug configuration for PBXNativeTarget "XLSXKitTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
@@ -788,7 +778,7 @@
 			};
 			name = Debug;
 		};
-		A1B2C3D4E5F6000000001302 /* Release */ = {
+		A1B2C3D4E5F6000000001302 /* Release configuration for PBXNativeTarget "XLSXKitTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
@@ -809,7 +799,7 @@
 			};
 			name = Release;
 		};
-		A1B2C3D4E5F6000000001401 /* Debug */ = {
+		A1B2C3D4E5F6000000001401 /* Debug configuration for PBXNativeTarget "XLSXEditorCoreTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
@@ -830,7 +820,7 @@
 			};
 			name = Debug;
 		};
-		A1B2C3D4E5F6000000001402 /* Release */ = {
+		A1B2C3D4E5F6000000001402 /* Release configuration for PBXNativeTarget "XLSXEditorCoreTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
@@ -857,55 +847,49 @@
 		A1B2C3D4E5F6000000001500 /* Build configuration list for PBXProject "Native Sheets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1B2C3D4E5F6000000000901 /* Debug */,
-				A1B2C3D4E5F6000000000902 /* Release */,
+				A1B2C3D4E5F6000000000901 /* Debug configuration for PBXProject "Native Sheets" */,
+				A1B2C3D4E5F6000000000902 /* Release configuration for PBXProject "Native Sheets" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		A1B2C3D4E5F6000000001501 /* Build configuration list for PBXNativeTarget "Native Sheets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1B2C3D4E5F6000000001001 /* Debug */,
-				A1B2C3D4E5F6000000001002 /* Release */,
+				A1B2C3D4E5F6000000001001 /* Debug configuration for PBXNativeTarget "Native Sheets" */,
+				A1B2C3D4E5F6000000001002 /* Release configuration for PBXNativeTarget "Native Sheets" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		A1B2C3D4E5F6000000001502 /* Build configuration list for PBXNativeTarget "XLSXKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1B2C3D4E5F6000000001101 /* Debug */,
-				A1B2C3D4E5F6000000001102 /* Release */,
+				A1B2C3D4E5F6000000001101 /* Debug configuration for PBXNativeTarget "XLSXKit" */,
+				A1B2C3D4E5F6000000001102 /* Release configuration for PBXNativeTarget "XLSXKit" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		A1B2C3D4E5F6000000001503 /* Build configuration list for PBXNativeTarget "XLSXEditorCore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1B2C3D4E5F6000000001201 /* Debug */,
-				A1B2C3D4E5F6000000001202 /* Release */,
+				A1B2C3D4E5F6000000001201 /* Debug configuration for PBXNativeTarget "XLSXEditorCore" */,
+				A1B2C3D4E5F6000000001202 /* Release configuration for PBXNativeTarget "XLSXEditorCore" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		A1B2C3D4E5F6000000001504 /* Build configuration list for PBXNativeTarget "XLSXKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1B2C3D4E5F6000000001301 /* Debug */,
-				A1B2C3D4E5F6000000001302 /* Release */,
+				A1B2C3D4E5F6000000001301 /* Debug configuration for PBXNativeTarget "XLSXKitTests" */,
+				A1B2C3D4E5F6000000001302 /* Release configuration for PBXNativeTarget "XLSXKitTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		A1B2C3D4E5F6000000001505 /* Build configuration list for PBXNativeTarget "XLSXEditorCoreTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1B2C3D4E5F6000000001401 /* Debug */,
-				A1B2C3D4E5F6000000001402 /* Release */,
+				A1B2C3D4E5F6000000001401 /* Debug configuration for PBXNativeTarget "XLSXEditorCoreTests" */,
+				A1B2C3D4E5F6000000001402 /* Release configuration for PBXNativeTarget "XLSXEditorCoreTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */

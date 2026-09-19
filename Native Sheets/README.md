@@ -49,18 +49,6 @@ checked on a Mac first.
 
 The app preserves charts, images, pivot tables and conditional formatting, but does not show or edit them. There is no find and replace, no sorting, no filtering and no cell comments. The app does not evaluate array formulas, `INDIRECT`, `OFFSET` or defined names. Defined names survive a save.
 
-## Performance
-
-Measured on a 1.6 MB workbook with 4 sheets, 20,739 cells and 4,530 formulas. Release build.
-
-| Action | Time |
-|---|---|
-| Open | 0.09 s |
-| Save | 0.11 s |
-| Recalculate all | 0.41 s |
-
-All 20,739 cells are identical after a save. All 4,530 formulas match the cached values in the file. `openpyxl` confirms the result.
-
 ## Tests
 
 ```bash
@@ -80,18 +68,3 @@ XLSX_CHECK_SOURCE=~/book.xlsx xcrun xctest -XCTest XLSXKitTests.ExternalWorkbook
 `XLSX_RENDER_SOURCE` works the same way against
 `XLSXEditorCoreTests.RenderSnapshotTests`, and writes PNGs of every sheet to
 `XLSX_RENDER_OUTPUT` (the temporary directory by default).
-
-## Layout
-
-```
-XLSXKit/                 file format, no AppKit
-XLSXEditorCore/          interface, as a framework so tests can drive it
-Native Sheets/           app target: entry point, Info.plist, icon
-XLSXKitTests/            unit tests for the format code
-XLSXEditorCoreTests/     unit tests for the interface
-Scripts/make_dmg.sh      builds the app and packages NativeSheets.dmg
-../landing/              website, published to GitHub Pages
-```
-
-The two frameworks are separate targets so the tests can link them without
-launching the app. The app embeds both.
