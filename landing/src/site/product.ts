@@ -175,4 +175,4 @@ export const tools: Tool[] = [
   },
 ];
 
-export const buildCommand = "./Scripts/make_app.sh";
+export const buildCommand = "./Scripts/make_dmg.sh";

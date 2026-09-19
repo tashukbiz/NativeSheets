@@ -12,29 +12,19 @@ Download: https://tashukbiz.github.io/NativeSheets/
 
 ## Build
 
-Build the app from the latest code:
+Build the disk image from the latest code:
 
 ```bash
 git clone https://github.com/tashukbiz/NativeSheets.git
 cd NativeSheets/native-sheets
-./Scripts/make_app.sh
-```
-
-This makes `build/Native Sheets.app`. On an existing clone, run `git pull` first.
-A release build carries both architectures; a debug build (`./Scripts/make_app.sh debug`)
-only carries the one the machine runs, which halves the build.
-
-## Package
-
-The published deliverable is a disk image: the app next to an Applications
-symlink, so installing is a drag.
-
-```bash
 ./Scripts/make_dmg.sh
 ```
 
-This makes `build/NativeSheets.dmg`. It builds the release app first, then
-checks the signature and prints the architectures in the binary.
+This makes `build/NativeSheets.dmg`, the published deliverable: the app next to
+an Applications symlink, so installing is a drag. On an existing clone, run
+`git pull` first. The binary is universal, and the script checks the signature
+and prints the architectures when it finishes. The assembled bundle is left in
+`build/Native Sheets.app` if you want to run it without installing.
 
 ## Features
 
@@ -79,7 +69,6 @@ XLSX_CHECK_SOURCE=~/book.xlsx swift test --filter ExternalWorkbookTests
 Sources/XLSXKit          file format, no AppKit
 Sources/XLSXEditorCore   interface, as a library so tests can drive it
 Sources/XLSXEditor       executable
-Scripts/make_app.sh      builds the .app bundle
-Scripts/make_dmg.sh      packages the bundle as NativeSheets.dmg
+Scripts/make_dmg.sh      builds the app and packages NativeSheets.dmg
 landing/                 website, published to GitHub Pages
 ```

@@ -148,7 +148,7 @@ export const openXlsxOnMacWithoutExcel: ContentRecord = {
     {
       kind: "code",
       language: "bash",
-      code: "./Scripts/make_app.sh\nopen \"build/Native Sheets.app\" your-workbook.xlsx",
+      code: "./Scripts/make_dmg.sh\nopen \"build/Native Sheets.app\" your-workbook.xlsx",
     },
     { kind: "heading", id: "questions", text: "Common questions" },
     {

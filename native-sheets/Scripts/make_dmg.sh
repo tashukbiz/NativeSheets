@@ -1,5 +1,9 @@
 #!/bin/bash
-# Builds Native Sheets.app and packages it as the disk image that gets published.
+# Builds Native Sheets and packages it as the disk image that gets published.
+#
+# AppKit needs a real bundle, not a bare binary: without Info.plist there is no
+# menu bar, no document types and no Dock icon. The bundle is assembled here on
+# the way into the image.
 #
 # A DMG is what macOS expects for an app distributed outside the App Store: it
 # mounts read only, so the app is copied out rather than run from the download,
@@ -11,9 +15,24 @@ APP="$ROOT/build/Native Sheets.app"
 DMG="$ROOT/build/NativeSheets.dmg"
 STAGE="$ROOT/build/dmg"
 
-"$ROOT/Scripts/make_app.sh" release
+cd "$ROOT"
+# Universal, so one download runs on Apple Silicon and on Intel.
+swift build -c release --arch arm64 --arch x86_64
+BIN_PATH="$(swift build -c release --arch arm64 --arch x86_64 --show-bin-path)"
 
-rm -rf "$STAGE" "$DMG"
+rm -rf "$APP" "$STAGE" "$DMG"
+mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
+
+cp "$BIN_PATH/XLSXEditor" "$APP/Contents/MacOS/Native Sheets"
+cp "$ROOT/Resources/Info.plist" "$APP/Contents/Info.plist"
+if [ -f "$ROOT/Resources/AppIcon.icns" ]; then
+  cp "$ROOT/Resources/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
+fi
+printf 'APPL????' > "$APP/Contents/PkgInfo"
+
+# An ad-hoc signature keeps macOS from quarantining the bundle on every launch.
+codesign --force --deep --sign - "$APP"
+
 mkdir -p "$STAGE"
 # ditto, not cp: it keeps the bundle layout and the signature intact.
 ditto "$APP" "$STAGE/Native Sheets.app"
