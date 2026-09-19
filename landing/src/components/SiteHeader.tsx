@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/site/config";
 import { download } from "@/site/product";
-import { href } from "@/site/urls";
+import { assetPath, href } from "@/site/urls";
 
 const navigation = [
   { label: "Viewer", route: "/viewer/" },
@@ -33,11 +33,20 @@ export function SiteHeader() {
   );
 }
 
+/**
+ * The app icon. It is the same file the browser already fetched for the tab, so
+ * showing it here costs no extra request. Plain img rather than next/image:
+ * the export runs with images unoptimized, which makes the two equivalent.
+ */
 function SheetMark() {
   return (
-    <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" focusable="false">
-      <rect x="1" y="1" width="20" height="20" rx="4" fill="var(--accent-wash)" stroke="var(--accent)" />
-      <path d="M1 8h20M8 8v13M1 14.5h20" stroke="var(--accent)" strokeWidth="1.2" fill="none" />
-    </svg>
+    <img
+      className="site-header__mark"
+      src={assetPath("/icon.png")}
+      width={22}
+      height={22}
+      alt=""
+      aria-hidden="true"
+    />
   );
 }
