@@ -8,14 +8,19 @@
 # A DMG is what macOS expects for an app distributed outside the App Store: it
 # mounts read only, so the app is copied out rather than run from the download,
 # and the Applications symlink turns that copy into a drag.
+#
+# Releasing is manual: the image is written into the site's public/ directory and
+# committed, so pushing it is what publishes it. Nothing builds the app in CI.
 set -euo pipefail
 
 # $0, not BASH_SOURCE: the latter is unset when the script is handed to another
 # shell (zsh ./Scripts/make_dmg.sh), and under set -u that resolves ROOT to /.
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+REPO="$(cd "$ROOT/.." && pwd)"
 APP="$ROOT/build/Native Sheets.app"
-DMG="$ROOT/build/NativeSheets.dmg"
 STAGE="$ROOT/build/dmg"
+# Next copies public/ into the exported site verbatim, so this path is the URL.
+DMG="$REPO/landing/public/NativeSheets.dmg"
 
 cd "$ROOT"
 # Universal, so one download runs on Apple Silicon and on Intel.
@@ -46,3 +51,4 @@ rm -rf "$STAGE"
 codesign --verify --deep --strict "$APP"
 lipo -archs "$APP/Contents/MacOS/Native Sheets"
 echo "Built $DMG"
+echo "Commit landing/public/NativeSheets.dmg and push to publish it."

@@ -59,7 +59,7 @@ export function softwareApplicationSchema(): JsonValue {
     isAccessibleForFree: true,
     author: { "@id": operatorId },
     url: absoluteUrl("/"),
-    downloadUrl: download.url,
+    downloadUrl: download.absoluteUrl,
     softwareVersion: "1.0",
     offers: {
       "@type": "Offer",

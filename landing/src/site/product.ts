@@ -2,6 +2,7 @@
  * Verified product facts. Every claim here is traceable to the app repository
  * (native-sheets/README.md, Resources/Info.plist, Package.swift).
  */
+import { absoluteAssetUrl, assetPath } from "./urls";
 
 export type Availability = "released" | "source-available" | "coming-soon" | "unavailable";
 
@@ -30,12 +31,16 @@ export const product: ProductFacts = {
 };
 
 /**
- * The download. The asset is published as a GitHub release, and the URL below
- * is the stable alias GitHub keeps pointed at the newest release.
+ * The download. The image is committed to the repository under landing/public,
+ * so the site serves it itself and a push is what publishes a new build.
  */
+const downloadFile = "/NativeSheets.dmg";
+
 export const download = {
-  url: "https://github.com/tashukbiz/nativesheets/releases/latest/download/NativeSheets.dmg",
-  releasesUrl: "https://github.com/tashukbiz/nativesheets/releases",
+  /** Href for a link on the site. Carries the base path already. */
+  url: assetPath(downloadFile),
+  /** Same file, absolute, for metadata that cannot use a relative path. */
+  absoluteUrl: absoluteAssetUrl(downloadFile),
   repositoryUrl: "https://github.com/tashukbiz/nativesheets",
   fileName: "NativeSheets.dmg",
   bundleName: "Native Sheets.app",
