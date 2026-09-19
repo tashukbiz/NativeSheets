@@ -2,7 +2,7 @@
 
 The website for Native Sheets. Next.js App Router, static export, no backend.
 
-Published to GitHub Pages at https://tashukbiz.github.io/NativeSheets/ by `.github/workflows/pages.yml` on every push to `main`.
+Published to GitHub Pages at https://tashukbiz.github.io/nativesheets/ by `.github/workflows/pages.yml` on every push to `main`.
 
 ```bash
 pnpm install
@@ -27,7 +27,7 @@ Build-time environment variables. Each one is off when unset.
 | Variable | Effect |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_ORIGIN` | Public origin. Must be HTTPS. Without it, every page gets `noindex` |
-| `NEXT_PUBLIC_BASE_PATH` | Sub-path for a project site. `/NativeSheets` here |
+| `NEXT_PUBLIC_BASE_PATH` | Sub-path for a project site. `/nativesheets` here |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Enables analytics and the consent banner |
 | `NEXT_PUBLIC_AD_STATE` | `disabled`, `preview`, `pending-review` or `live` |
 | `NEXT_PUBLIC_ADSENSE_CLIENT` | Publisher ID. Required for `live` |

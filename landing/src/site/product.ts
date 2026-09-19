@@ -34,9 +34,9 @@ export const product: ProductFacts = {
  * is the stable alias GitHub keeps pointed at the newest release.
  */
 export const download = {
-  url: "https://github.com/tashukbiz/NativeSheets/releases/latest/download/NativeSheets.dmg",
-  releasesUrl: "https://github.com/tashukbiz/NativeSheets/releases",
-  repositoryUrl: "https://github.com/tashukbiz/NativeSheets",
+  url: "https://github.com/tashukbiz/nativesheets/releases/latest/download/NativeSheets.dmg",
+  releasesUrl: "https://github.com/tashukbiz/nativesheets/releases",
+  repositoryUrl: "https://github.com/tashukbiz/nativesheets",
   fileName: "NativeSheets.dmg",
   bundleName: "Native Sheets.app",
   format: "Disk image containing the app bundle",
