@@ -1,0 +1,50 @@
+name: Publish the macOS disk image
+
+# The landing site links to releases/latest/download/NativeSheets.dmg, so that
+# alias 404s until a release carries an asset under exactly that name.
+on:
+  push:
+    tags: ["v*"]
+  # Re-runs a tag that is already pushed, for when a release job failed.
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing tag to build and publish, for example v1.0.0"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ inputs.tag || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - run: swift test
+        working-directory: native-sheets
+
+      - run: ./Scripts/make_dmg.sh
+        working-directory: native-sheets
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag || github.ref_name }}
+          ASSET: native-sheets/build/NativeSheets.dmg
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$ASSET" --clobber
+          else
+            gh release create "$TAG" "$ASSET" --latest \
+              --title "Native Sheets $TAG" \
+              --notes "A universal build for Apple Silicon and Intel, requiring macOS 14 or later.
+
+          The app carries an ad-hoc signature rather than a Developer ID, so macOS blocks the first launch. Open System Settings, then Privacy & Security, and select Open Anyway."
+          fi

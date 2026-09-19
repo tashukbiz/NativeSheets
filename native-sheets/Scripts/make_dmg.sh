@@ -10,7 +10,9 @@
 # and the Applications symlink turns that copy into a drag.
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+# $0, not BASH_SOURCE: the latter is unset when the script is handed to another
+# shell (zsh ./Scripts/make_dmg.sh), and under set -u that resolves ROOT to /.
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 APP="$ROOT/build/Native Sheets.app"
 DMG="$ROOT/build/NativeSheets.dmg"
 STAGE="$ROOT/build/dmg"
