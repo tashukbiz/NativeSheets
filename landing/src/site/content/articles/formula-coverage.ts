@@ -124,7 +124,10 @@ export const formulaCoverage: ContentRecord = {
     {
       kind: "code",
       language: "bash",
-      code: "XLSX_CHECK_SOURCE=~/book.xlsx swift test --filter ExternalWorkbookTests",
+      code:
+        "xcodebuild build-for-testing -scheme \"Native Sheets\" -derivedDataPath build/DerivedData\n" +
+        "XLSX_CHECK_SOURCE=~/book.xlsx xcrun xctest -XCTest XLSXKitTests.ExternalWorkbookTests \\\n" +
+        "  build/DerivedData/Build/Products/Debug/XLSXKitTests.xctest",
     },
     {
       kind: "paragraph",

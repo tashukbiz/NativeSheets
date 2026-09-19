@@ -143,13 +143,15 @@ export const openXlsxOnMacWithoutExcel: ContentRecord = {
     {
       kind: "paragraph",
       content: [
-        "You can also build it yourself. This needs a Swift 6 toolchain (Xcode 16 or newer):",
+        "You can also build it yourself. This needs Xcode 26 or newer:",
       ],
     },
     {
       kind: "code",
       language: "bash",
-      code: "./Scripts/make_dmg.sh\nopen \"build/Native Sheets.app\" your-workbook.xlsx",
+      code:
+        "./Scripts/make_dmg.sh\n" +
+        "open \"build/DerivedData/Build/Products/Release/Native Sheets.app\" your-workbook.xlsx",
     },
     { kind: "heading", id: "questions", text: "Common questions" },
     {

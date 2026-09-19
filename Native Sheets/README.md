@@ -8,7 +8,7 @@ Download: https://tashukbiz.github.io/nativesheets/
 
 - macOS 14 or later
 - Apple Silicon or Intel. The app ships as a universal binary.
-- To build: Swift 6 toolchain (Xcode 16 or later)
+- To build: Xcode 26 or later
 
 ## Build
 
@@ -16,7 +16,7 @@ Build the disk image from the latest code:
 
 ```bash
 git clone https://github.com/tashukbiz/nativesheets.git
-cd nativesheets/native-sheets
+cd "nativesheets/Native Sheets"
 ./Scripts/make_dmg.sh
 ```
 
@@ -24,7 +24,10 @@ This writes `landing/public/NativeSheets.dmg`: the app next to an Applications
 symlink, so installing is a drag. On an existing clone, run `git pull` first.
 The binary is universal, and the script checks the signature and prints the
 architectures when it finishes. The assembled bundle is left in
-`build/Native Sheets.app` if you want to run it without installing.
+`build/DerivedData/Build/Products/Release/Native Sheets.app` if you want to run
+it without installing.
+
+To work on the app instead, open `Native Sheets.xcodeproj` and press Run.
 
 The image lands inside the site because the site is what serves it. Committing
 `landing/public/NativeSheets.dmg` and pushing to `main` is the release: the
@@ -61,21 +64,34 @@ All 20,739 cells are identical after a save. All 4,530 formulas match the cached
 ## Tests
 
 ```bash
-swift test
+xcodebuild test -scheme "Native Sheets" -derivedDataPath build/DerivedData
 ```
 
-149 tests. Three are opt-in and need a file you supply:
+149 tests across `XLSXKitTests` and `XLSXEditorCoreTests`. Three are opt-in and
+need a file you supply. `xcodebuild` does not pass the shell environment to the
+test process, so those take `xctest` directly:
 
 ```bash
-XLSX_CHECK_SOURCE=~/book.xlsx swift test --filter ExternalWorkbookTests
+xcodebuild build-for-testing -scheme "Native Sheets" -derivedDataPath build/DerivedData
+XLSX_CHECK_SOURCE=~/book.xlsx xcrun xctest -XCTest XLSXKitTests.ExternalWorkbookTests \
+  "build/DerivedData/Build/Products/Debug/XLSXKitTests.xctest"
 ```
+
+`XLSX_RENDER_SOURCE` works the same way against
+`XLSXEditorCoreTests.RenderSnapshotTests`, and writes PNGs of every sheet to
+`XLSX_RENDER_OUTPUT` (the temporary directory by default).
 
 ## Layout
 
 ```
-Sources/XLSXKit          file format, no AppKit
-Sources/XLSXEditorCore   interface, as a library so tests can drive it
-Sources/XLSXEditor       executable
+XLSXKit/                 file format, no AppKit
+XLSXEditorCore/          interface, as a framework so tests can drive it
+Native Sheets/           app target: entry point, Info.plist, icon
+XLSXKitTests/            unit tests for the format code
+XLSXEditorCoreTests/     unit tests for the interface
 Scripts/make_dmg.sh      builds the app and packages NativeSheets.dmg
-landing/                 website, published to GitHub Pages
+../landing/              website, published to GitHub Pages
 ```
+
+The two frameworks are separate targets so the tests can link them without
+launching the app. The app embeds both.

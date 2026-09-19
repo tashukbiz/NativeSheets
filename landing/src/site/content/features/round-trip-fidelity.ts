@@ -57,13 +57,16 @@ export const roundTripFidelity: ContentRecord = {
     {
       kind: "code",
       language: "bash",
-      code: "XLSX_CHECK_SOURCE=~/book.xlsx swift test --filter ExternalWorkbookTests",
+      code:
+        "xcodebuild build-for-testing -scheme \"Native Sheets\" -derivedDataPath build/DerivedData\n" +
+        "XLSX_CHECK_SOURCE=~/book.xlsx xcrun xctest -XCTest XLSXKitTests.ExternalWorkbookTests \\\n" +
+        "  build/DerivedData/Build/Products/Debug/XLSXKitTests.xctest",
     },
     { kind: "heading", id: "limits", text: "Prerequisites and limits" },
     {
       kind: "list",
       items: [
-        ["macOS 14 or later, and a Swift 6 toolchain (Xcode 16 or newer) to build the app."],
+        ["macOS 14 or later, and Xcode 26 or newer to build the app."],
         [
           "Preserved is not editable. Charts, images, pivot tables and conditional formatting are carried through a save but are neither displayed nor edited.",
         ],

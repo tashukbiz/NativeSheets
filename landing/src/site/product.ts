@@ -1,6 +1,6 @@
 /**
  * Verified product facts. Every claim here is traceable to the app repository
- * (native-sheets/README.md, Resources/Info.plist, Package.swift).
+ * ("Native Sheets/README.md" and the app target's Info.plist).
  */
 import { absoluteAssetUrl, assetPath } from "./urls";
 

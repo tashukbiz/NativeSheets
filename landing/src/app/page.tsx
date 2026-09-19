@@ -178,7 +178,7 @@ export default function HomePage() {
               </ol>
               <p>
                 You only do step 4 once. Alternatively, build the disk image yourself from source
-                with a Swift 6 toolchain (Xcode 16 or newer):
+                with Xcode 26 or newer:
               </p>
               <pre>
                 <code>{buildCommand}</code>

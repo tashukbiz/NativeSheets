@@ -1,10 +1,6 @@
 #!/bin/bash
 # Builds Native Sheets and packages it as the disk image that gets published.
 #
-# AppKit needs a real bundle, not a bare binary: without Info.plist there is no
-# menu bar, no document types and no Dock icon. The bundle is assembled here on
-# the way into the image.
-#
 # A DMG is what macOS expects for an app distributed outside the App Store: it
 # mounts read only, so the app is copied out rather than run from the download,
 # and the Applications symlink turns that copy into a drag.
@@ -17,26 +13,24 @@ set -euo pipefail
 # shell (zsh ./Scripts/make_dmg.sh), and under set -u that resolves ROOT to /.
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 REPO="$(cd "$ROOT/.." && pwd)"
-APP="$ROOT/build/Native Sheets.app"
+DERIVED="$ROOT/build/DerivedData"
+APP="$DERIVED/Build/Products/Release/Native Sheets.app"
 STAGE="$ROOT/build/dmg"
 # Next copies public/ into the exported site verbatim, so this path is the URL.
 DMG="$REPO/landing/public/NativeSheets.dmg"
 
-cd "$ROOT"
-# Universal, so one download runs on Apple Silicon and on Intel.
-swift build -c release --arch arm64 --arch x86_64
-BIN_PATH="$(swift build -c release --arch arm64 --arch x86_64 --show-bin-path)"
+rm -rf "$STAGE" "$DMG"
 
-rm -rf "$APP" "$STAGE" "$DMG"
-mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
-
-cp "$BIN_PATH/XLSXEditor" "$APP/Contents/MacOS/Native Sheets"
-cp "$ROOT/Resources/Info.plist" "$APP/Contents/Info.plist"
-cp "$ROOT/Resources/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
-printf 'APPL????' > "$APP/Contents/PkgInfo"
-
-# An ad-hoc signature keeps macOS from quarantining the bundle on every launch.
-codesign --force --deep --sign - "$APP"
+# ONLY_ACTIVE_ARCH=NO makes this universal, so one download runs on Apple
+# Silicon and on Intel. The project signs ad-hoc, which is all an unnotarised
+# build can do and all it needs to stop macOS quarantining it on every launch.
+xcodebuild \
+    -project "$ROOT/Native Sheets.xcodeproj" \
+    -scheme "Native Sheets" \
+    -configuration Release \
+    -derivedDataPath "$DERIVED" \
+    ONLY_ACTIVE_ARCH=NO \
+    build
 
 mkdir -p "$STAGE"
 # ditto, not cp: it keeps the bundle layout and the signature intact.

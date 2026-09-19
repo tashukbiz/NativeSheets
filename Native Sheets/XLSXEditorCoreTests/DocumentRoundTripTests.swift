@@ -128,8 +128,8 @@ final class DocumentRoundTripTests: XCTestCase {
     /// open fails with an unhelpful alert.
     func testTheBundleDeclaresAWorkingDocumentClass() throws {
         let plist = URL(fileURLWithPath: #filePath)
-            .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
-            .appendingPathComponent("Resources/Info.plist")
+            .deletingLastPathComponent().deletingLastPathComponent()
+            .appendingPathComponent("Native Sheets/Info.plist")
         let contents = try XCTUnwrap(NSDictionary(contentsOf: plist))
         let types = try XCTUnwrap(contents["CFBundleDocumentTypes"] as? [[String: Any]])
         let className = try XCTUnwrap(types.first?["NSDocumentClass"] as? String)

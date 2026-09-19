@@ -4,9 +4,9 @@ import XCTest
 /// Checks a real workbook of your own, end to end.
 ///
 /// Skipped unless `XLSX_CHECK_SOURCE` points at a file, so the suite stays
-/// self-contained. Run it against anything suspicious:
-///
-///     XLSX_CHECK_SOURCE=~/book.xlsx swift test --filter ExternalWorkbookTests
+/// self-contained. `xcodebuild test` does not forward the shell environment to
+/// the test process, so running this one takes `xctest` directly. See the
+/// README.
 final class ExternalWorkbookTests: XCTestCase {
     private func sourceWorkbook() throws -> Workbook {
         guard let path = ProcessInfo.processInfo.environment["XLSX_CHECK_SOURCE"] else {

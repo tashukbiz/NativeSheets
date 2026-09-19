@@ -3,3 +3,16 @@
 node_modules/
 .pnpm-store/
 RELEASE-PROMPT.md
+
+# Xcode
+build/
+DerivedData/
+*.xcuserdatad
+xcuserdata/
+*.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+
+# Sample workbooks live outside version control: the tracker asks for its data
+# to be kept out of repositories.
+*.xlsx
+!Native Sheets/XLSXKitTests/**/*.xlsx
+!Native Sheets/XLSXEditorCoreTests/**/*.xlsx
