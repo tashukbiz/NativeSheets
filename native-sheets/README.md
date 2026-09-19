@@ -2,7 +2,7 @@
 
 A macOS app that opens and edits `.xlsx` files. Free. No runtime to install. No third-party dependencies.
 
-Download: https://tashukbiz.github.io/NativeSheets/
+Download: https://tashukbiz.github.io/nativesheets/
 
 ## Requirements
 
@@ -15,8 +15,8 @@ Download: https://tashukbiz.github.io/NativeSheets/
 Build the disk image from the latest code:
 
 ```bash
-git clone https://github.com/tashukbiz/NativeSheets.git
-cd NativeSheets/native-sheets
+git clone https://github.com/tashukbiz/nativesheets.git
+cd nativesheets/native-sheets
 ./Scripts/make_dmg.sh
 ```
 

@@ -1,3 +1,4 @@
+import { download } from "../../product";
 import type { ContentRecord } from "../types";
 
 export const openXlsxOnMacWithoutExcel: ContentRecord = {
@@ -127,7 +128,7 @@ export const openXlsxOnMacWithoutExcel: ContentRecord = {
         "Native Sheets is free and has no third-party dependencies. ",
         {
           text: "Download it",
-          href: "https://github.com/tashukbiz/NativeSheets/releases/latest/download/NativeSheets.dmg",
+          href: download.url,
           external: true,
         },
         " and drag the app from the disk image to your Applications folder. It needs macOS 14 or later, on Apple Silicon or Intel.",

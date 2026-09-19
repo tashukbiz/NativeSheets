@@ -27,7 +27,7 @@ jobs:
         working-directory: landing
     env:
       NEXT_PUBLIC_SITE_ORIGIN: https://tashukbiz.github.io
-      NEXT_PUBLIC_BASE_PATH: /NativeSheets
+      NEXT_PUBLIC_BASE_PATH: /nativesheets
       NEXT_PUBLIC_AD_STATE: disabled
     steps:
       - uses: actions/checkout@v4
