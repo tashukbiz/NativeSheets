@@ -43,8 +43,6 @@ export const download = {
   absoluteUrl: absoluteAssetUrl(downloadFile),
   repositoryUrl: "https://github.com/tashukbiz/nativesheets",
   fileName: "NativeSheets.dmg",
-  bundleName: "Native Sheets.app",
-  format: "Disk image containing the app bundle",
 } as const;
 
 /**

@@ -2,7 +2,6 @@
 .swiftpm/
 build/
 *.app
-NativeSheets.dmg
 DerivedData/
 .DS_Store
 
