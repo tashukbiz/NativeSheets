@@ -20,11 +20,18 @@ cd nativesheets/native-sheets
 ./Scripts/make_dmg.sh
 ```
 
-This makes `build/NativeSheets.dmg`, the published deliverable: the app next to
-an Applications symlink, so installing is a drag. On an existing clone, run
-`git pull` first. The binary is universal, and the script checks the signature
-and prints the architectures when it finishes. The assembled bundle is left in
+This writes `landing/public/NativeSheets.dmg`: the app next to an Applications
+symlink, so installing is a drag. On an existing clone, run `git pull` first.
+The binary is universal, and the script checks the signature and prints the
+architectures when it finishes. The assembled bundle is left in
 `build/Native Sheets.app` if you want to run it without installing.
+
+The image lands inside the site because the site is what serves it. Committing
+`landing/public/NativeSheets.dmg` and pushing to `main` is the release: the
+Pages workflow redeploys, and the download link on the page picks the new file
+up with no further step. There is no version tag, no release page, and nothing
+in CI builds the app, so every published binary is one that was built and
+checked on a Mac first.
 
 ## Features
 
