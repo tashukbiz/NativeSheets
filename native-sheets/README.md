@@ -70,5 +70,12 @@ Sources/XLSXKit          file format, no AppKit
 Sources/XLSXEditorCore   interface, as a library so tests can drive it
 Sources/XLSXEditor       executable
 Scripts/make_dmg.sh      builds the app and packages NativeSheets.dmg
+icon.png                 icon artwork, at the repository root
+Scripts/make-icons.swift redraws the app icon and the site favicons from it
 landing/                 website, published to GitHub Pages
 ```
+
+The two `Scripts` paths are not in the same directory: `make-icons.swift` sits at
+the repository root, because it writes into both `native-sheets` and `landing`.
+Run `swift Scripts/make-icons.swift` from there after changing `icon.png`, then
+rebuild the disk image so the app picks the new icon up.

@@ -7,7 +7,7 @@ import { ConsentManager } from "@/components/ConsentManager";
 import { Analytics } from "@/components/Analytics";
 import { JsonLd } from "@/components/JsonLd";
 import { websiteSchema } from "@/site/schema";
-import { absoluteUrl } from "@/site/urls";
+import { absoluteUrl, assetPath } from "@/site/urls";
 
 export const metadata: Metadata = {
   metadataBase: new URL(absoluteUrl("/")),
@@ -20,6 +20,12 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.operator.name }],
   creator: siteConfig.operator.name,
   formatDetection: { telephone: false },
+  // assetPath, not a bare string: Next does not apply the base path to icon
+  // metadata, and a project site is served from a sub-path.
+  icons: {
+    icon: { url: assetPath("/icon.png"), type: "image/png", sizes: "256x256" },
+    apple: { url: assetPath("/apple-touch-icon.png"), sizes: "180x180" },
+  },
   // A preview build is never indexable; the production origin overrides this.
   robots: siteConfig.isProductionOrigin ? undefined : { index: false, follow: false },
 };

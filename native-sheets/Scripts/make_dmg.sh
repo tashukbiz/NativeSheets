@@ -32,9 +32,7 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 
 cp "$BIN_PATH/XLSXEditor" "$APP/Contents/MacOS/Native Sheets"
 cp "$ROOT/Resources/Info.plist" "$APP/Contents/Info.plist"
-if [ -f "$ROOT/Resources/AppIcon.icns" ]; then
-  cp "$ROOT/Resources/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
-fi
+cp "$ROOT/Resources/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
 printf 'APPL????' > "$APP/Contents/PkgInfo"
 
 # An ad-hoc signature keeps macOS from quarantining the bundle on every launch.
