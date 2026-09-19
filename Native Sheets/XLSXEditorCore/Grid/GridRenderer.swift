@@ -18,6 +18,9 @@ struct GridRenderer {
     private static let selectionFill = NSColor.controlAccentColor.withAlphaComponent(0.12)
     private static let cellPadding: CGFloat = 4
 
+    /// A handful of fonts cover a whole sheet, so resolving them is cached.
+    private static let fontCache = FontCache()
+
     func draw(in dirtyRect: CGRect) {
         let body = CGRect(
             x: max(dirtyRect.minX, origin.x + GridMetrics.headerWidth),
@@ -273,13 +276,7 @@ struct GridRenderer {
 
     private func textAttributes(font: WorkbookStyles.Font, format: WorkbookStyles.CellFormat,
                                 colorOverride: String?, isText: Bool) -> [NSAttributedString.Key: Any] {
-        var traits: NSFontDescriptor.SymbolicTraits = []
-        if font.bold { traits.insert(.bold) }
-        if font.italic { traits.insert(.italic) }
-
-        let base = NSFont(name: font.name, size: font.size) ?? NSFont.systemFont(ofSize: font.size)
-        let descriptor = base.fontDescriptor.withSymbolicTraits(traits)
-        let resolved = NSFont(descriptor: descriptor, size: font.size) ?? base
+        let resolved = GridRenderer.fontCache.font(for: font)
 
         let paragraph = NSMutableParagraphStyle()
         // Text sits left and numbers right unless the style says otherwise.
@@ -517,5 +514,35 @@ extension NSColor {
             + 0.587 * srgb.greenComponent
             + 0.114 * srgb.blueComponent
         return luminance > 0.6
+    }
+}
+
+/// Thread-safe cache of the fonts a sheet's styles resolve to.
+final class FontCache: @unchecked Sendable {
+    private struct Key: Hashable {
+        let name: String
+        let size: Double
+        let bold: Bool
+        let italic: Bool
+    }
+
+    private var fonts: [Key: NSFont] = [:]
+    private let lock = NSLock()
+
+    func font(for font: WorkbookStyles.Font) -> NSFont {
+        let key = Key(name: font.name, size: font.size, bold: font.bold, italic: font.italic)
+        lock.lock()
+        defer { lock.unlock() }
+        if let existing = fonts[key] { return existing }
+
+        var traits: NSFontDescriptor.SymbolicTraits = []
+        if font.bold { traits.insert(.bold) }
+        if font.italic { traits.insert(.italic) }
+
+        let base = NSFont(name: font.name, size: font.size) ?? NSFont.systemFont(ofSize: font.size)
+        let descriptor = base.fontDescriptor.withSymbolicTraits(traits)
+        let resolved = NSFont(descriptor: descriptor, size: font.size) ?? base
+        fonts[key] = resolved
+        return resolved
     }
 }
