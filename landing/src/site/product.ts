@@ -27,14 +27,14 @@ export const product: ProductFacts = {
   price: "Free",
   availability: "released",
   accessNote:
-    "The app is a free download. It is not on the App Store and it is not notarised, so macOS asks you to confirm the first launch.",
+    "The app is a free download. It is not on the App Store, but it is signed with a Developer ID and notarised by Apple, so it opens straight away.",
 };
 
 /**
- * The download. The image is committed to the repository under landing/public,
+ * The download. The zip is committed to the repository under landing/public,
  * so the site serves it itself and a push is what publishes a new build.
  */
-const downloadFile = "/NativeSheets.dmg";
+const downloadFile = "/NativeSheets.zip";
 
 export const download = {
   /** Href for a link on the site. Carries the base path already. */
@@ -42,19 +42,18 @@ export const download = {
   /** Same file, absolute, for metadata that cannot use a relative path. */
   absoluteUrl: absoluteAssetUrl(downloadFile),
   repositoryUrl: "https://github.com/tashukbiz/nativesheets",
-  fileName: "NativeSheets.dmg",
+  fileName: "NativeSheets.zip",
 } as const;
 
 /**
- * The app carries an ad-hoc signature rather than a Developer ID, so Gatekeeper
- * blocks the first launch. These are the steps that clear it.
+ * The app is notarised and the ticket is stapled to it, so Gatekeeper clears it
+ * without a network check and without a trip through Privacy & Security. The
+ * only prompt left is the one macOS shows for anything downloaded.
  */
 export const installSteps: string[] = [
-  "Download the disk image and open it. macOS mounts it and shows Native Sheets beside a shortcut to Applications.",
-  "Drag Native Sheets onto Applications, then eject the disk image.",
-  "Open the app from Applications. macOS refuses the first launch because the app is not notarised.",
-  "Go to System Settings, then Privacy & Security. Find the message about Native Sheets and select Open Anyway.",
-  "Confirm. macOS remembers the choice, so later launches open directly.",
+  "Download the zip. Safari unpacks it on its own; in other browsers, double-click it.",
+  "Drag Native Sheets to your Applications folder.",
+  "Open it. macOS confirms once that the app came from the internet, and remembers the answer.",
 ];
 
 export interface Capability {
@@ -141,7 +140,7 @@ export const limitations: string[] = [
   "Printing is only what NSDocument provides for free.",
   "Formula support is a wide subset rather than the whole of Excel's function list. Array formulas, INDIRECT, OFFSET and defined names are not evaluated, though defined names survive a save.",
   "The app runs on macOS 14 or later. It is a universal binary, so Apple Silicon and Intel Macs both run it, but there is no Windows, Linux, iOS or web build of the editor itself.",
-  "The app is signed ad-hoc, not notarised by Apple. macOS blocks the first launch until you allow it in Privacy & Security.",
+  "The app is distributed outside the App Store, so it updates by downloading a new build rather than through the App Store.",
 ];
 
 /**
@@ -178,4 +177,4 @@ export const tools: Tool[] = [
   },
 ];
 
-export const buildCommand = "./Scripts/make_dmg.sh";
+export const buildCommand = "./Scripts/make_zip.sh \"path/to/Native Sheets.app\"";

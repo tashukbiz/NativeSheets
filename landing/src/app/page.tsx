@@ -177,8 +177,8 @@ export default function HomePage() {
                 ))}
               </ol>
               <p>
-                You only do step 4 once. Alternatively, build the disk image yourself from source
-                with Xcode 26 or newer:
+                Alternatively, build it yourself from source with Xcode 26 or newer. Archive the
+                app, export it, then package the export:
               </p>
               <pre>
                 <code>{buildCommand}</code>
@@ -234,9 +234,9 @@ export default function HomePage() {
             <div>
               <h3>Is it on the App Store?</h3>
               <p>
-                No. You download it from this site. Because the app is not notarised by Apple,
-                macOS blocks the first launch until you allow it in Privacy &amp; Security. The{" "}
-                <a href="#download">install steps</a> above cover it.
+                No. You download it from this site. The app is signed with a Developer ID and
+                notarised by Apple, so macOS opens it without sending you to Privacy &amp;
+                Security. The <a href="#download">install steps</a> above cover it.
               </p>
             </div>
           </div>

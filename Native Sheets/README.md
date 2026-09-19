@@ -12,25 +12,39 @@ Download: https://tashukbiz.github.io/nativesheets/
 
 ## Build
 
-Build the disk image from the latest code:
+To work on the app, open `Native Sheets.xcodeproj` and press Run. That is all
+day-to-day development needs.
+
+## Release
+
+Releasing takes Xcode, because the Developer ID certificate this project signs
+with is cloud managed: its private key stays at Apple, so only Xcode's export
+can use it.
+
+1. **Product, Archive.**
+2. In the Organizer, **Distribute App**, then **Direct Distribution**. Xcode
+   signs with the Developer ID certificate and uploads the app to Apple's
+   notary service.
+3. Wait for notarisation to come back. Apple emails, and the Organizer shows
+   the state next to the archive.
+4. **Export** the notarised app, then package it:
 
 ```bash
-git clone https://github.com/tashukbiz/nativesheets.git
-cd "nativesheets/Native Sheets"
-./Scripts/make_dmg.sh
+cd "Native Sheets"
+./Scripts/make_zip.sh "path/to/exported/Native Sheets.app"
 ```
 
-This writes `landing/public/NativeSheets.dmg`: the app next to an Applications
-symlink, so installing is a drag. On an existing clone, run `git pull` first.
-The binary is universal, and the script checks the signature and prints the
-architectures when it finishes. The assembled bundle is left in
-`build/DerivedData/Build/Products/Release/Native Sheets.app` if you want to run
-it without installing.
+The script staples the notarisation ticket to the app, checks that the bundle
+is Developer ID signed, has the hardened runtime and passes Gatekeeper, then
+writes `landing/public/NativeSheets.zip` and prints the architectures.
 
-To work on the app instead, open `Native Sheets.xcodeproj` and press Run.
+A zip rather than a disk image: an image has to carry its own signature to get
+past Gatekeeper on download, and the cloud managed certificate cannot sign one
+locally. A zip needs no signature. The stapled ticket inside is what Gatekeeper
+reads, so the app opens offline with no trip through Privacy & Security.
 
-The image lands inside the site because the site is what serves it. Committing
-`landing/public/NativeSheets.dmg` and pushing to `main` is the release: the
+The zip lands inside the site because the site is what serves it. Committing
+`landing/public/NativeSheets.zip` and pushing to `main` is the release: the
 Pages workflow redeploys, and the download link on the page picks the new file
 up with no further step. There is no version tag, no release page, and nothing
 in CI builds the app, so every published binary is one that was built and
@@ -89,7 +103,7 @@ XLSXEditorCore/          interface, as a framework so tests can drive it
 Native Sheets/           app target: entry point, Info.plist, icon
 XLSXKitTests/            unit tests for the format code
 XLSXEditorCoreTests/     unit tests for the interface
-Scripts/make_dmg.sh      builds the app and packages NativeSheets.dmg
+Scripts/make_zip.sh      packages a notarised build as NativeSheets.zip
 ../landing/              website, published to GitHub Pages
 ```
 
