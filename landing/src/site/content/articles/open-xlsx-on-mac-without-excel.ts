@@ -131,13 +131,13 @@ export const openXlsxOnMacWithoutExcel: ContentRecord = {
           href: download.url,
           external: true,
         },
-        " and drag the app from the disk image to your Applications folder. It needs macOS 14 or later, on Apple Silicon or Intel.",
+        ", unzip it, and drag the app to your Applications folder. It needs macOS 14 or later, on Apple Silicon or Intel.",
       ],
     },
     {
       kind: "paragraph",
       content: [
-        "The app is signed ad-hoc rather than notarised by Apple, so macOS refuses the first launch. To clear it, open System Settings, go to Privacy & Security, find the message about Native Sheets and select Open Anyway. macOS remembers the choice.",
+        "The app is signed with a Developer ID and notarised by Apple, and the notarisation ticket is stapled to the bundle, so it opens on the first try with no trip through Privacy & Security. You still get the one prompt macOS shows for anything downloaded, which you answer once.",
       ],
     },
     {
@@ -150,8 +150,8 @@ export const openXlsxOnMacWithoutExcel: ContentRecord = {
       kind: "code",
       language: "bash",
       code:
-        "./Scripts/make_dmg.sh\n" +
-        "open \"build/DerivedData/Build/Products/Release/Native Sheets.app\" your-workbook.xlsx",
+        "./Scripts/make_zip.sh \"path/to/Native Sheets.app\"\n" +
+        "open \"path/to/Native Sheets.app\" your-workbook.xlsx",
     },
     { kind: "heading", id: "questions", text: "Common questions" },
     {
